@@ -15,7 +15,6 @@
     align-items: center;
     justify-content: center;
 
-
     &__input {
         font-family: inherit;
         font-size: inherit; /* inherit the font size from the parent element (header) */
@@ -114,8 +113,6 @@
         position: absolute;
         top: 1.5rem;
         right: 1.1rem;
-
-
     }
 
     &__user-photo {

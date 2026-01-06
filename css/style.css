@@ -255,15 +255,72 @@ body {
   width: 1.75rem;
   fill: var(--color-primary);
 }
+.overview__location {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+.overview__icon-location {
+  margin-right: 0.5rem;
+}
+.overview__rating {
+  background-color: var(--color-primary);
+  margin-left: 3rem;
+  color: #fff;
+  padding: 0 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch; /* make the rating take the full height of the parent element */
+}
+.overview__rating-average {
+  font-size: 2.25rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: -3px;
+}
+.overview__rating-count {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
 .btn-inline {
   border: none;
   color: var(--color-primary);
   font-size: inherit;
   border-bottom: 1px solid currentColor; /* same color as the text */
   padding-bottom: 2px;
-  display: inline-block;
-  background-color: transparent;
+  display: inline-block; /* to make the button inline with the text */
+  background-color: transparent; /* to remove the background color of the button */
   cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-inline:hover {
+  color: var(--color-grey-dark-1);
+  transform: translateY(-2px);
+}
+.btn-inline:focus {
+  outline: none;
+  animation: pulsate 1s infinite;
+}
+.btn-inline:active {
+  transform: translateY(0);
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

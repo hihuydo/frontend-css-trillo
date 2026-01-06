@@ -11,7 +11,7 @@
     font-size: 1.4rem;
     height: 7rem;
     background-color: #fff;
-    border-bottom: var(--color-grey-light-2);
+    border-bottom: 1px solid var(--color-grey-light-2);
 
     display: flex;
     align-items: center;
@@ -35,6 +35,16 @@
         flex: 1; /* the element will take up the remaining space */
 
         height: 80rem;
-        background-color: blue;
+    }
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__photo { 
+        width: 100%; /* responsive design, make the photo take the full width of the gallery */
+        display: block; /* image should always be block or inline-bllock, to avoid whitespace issues */
     }
 }

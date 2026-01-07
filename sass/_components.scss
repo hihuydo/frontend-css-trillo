@@ -469,3 +469,72 @@
         z-index: 1; /* to put the quote marks on top of the review */
     }
 }
+
+////////////////////////////////////////
+/// CALL TO ACTION
+.cta {
+    padding: 3.5rem 0;
+    text-align: center;
+
+    &__book-now {
+        font-size: 2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+
+    }
+}
+
+////////////////////////////////////////
+/// BUTTON
+.btn {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff;
+
+    border-radius: 100px;
+    border: none; 
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    cursor: pointer;
+
+    position: relative; /* for the children elements */
+    overflow: hidden; /* prevent the invisible text from overflowing the button (showing) */
+
+    & > * {
+        display: inline-block; /* to be able to use padding and margin */
+        height: 100%;
+        width: 100%;
+        transition: all .2s;
+    }
+
+    &__visible {
+        padding: 2rem 7.5rem;
+    }
+
+    &__invisible {
+        position: absolute;
+        top: -100%; /* move up exactly the height of the button */
+        left: 0; 
+        padding: 2rem 0;
+    }
+
+    &:hover {
+        background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+
+    }
+
+    &:hover &__visible {
+        transform: translateY(100%);
+        
+    }
+
+    &:hover &__invisible {
+        top: 0;
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+}

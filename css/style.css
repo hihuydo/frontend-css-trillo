@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --color-primary: #eb2f64;
   --color-primary-light: #FF3366;
@@ -85,6 +86,7 @@ body {
 }
 
 .detail {
+  font-size: 1.4rem;
   display: flex;
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
@@ -92,7 +94,6 @@ body {
 }
 
 .description {
-  font-size: 1.4rem;
   background-color: #fff;
   box-shadow: var(--shadow-light);
   padding: 3rem;
@@ -101,8 +102,10 @@ body {
 }
 
 .user-reviews {
-  background-color: blue;
   flex: 1; /* the element will take up the remaining space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
@@ -318,9 +321,16 @@ body {
   cursor: pointer;
   transition: all 0.2s;
 }
+.btn-inline span {
+  margin-left: 3px;
+  transition: margin-left 0.2s;
+}
 .btn-inline:hover {
   color: var(--color-grey-dark-1);
   transform: translateY(-2px);
+}
+.btn-inline:hover span {
+  margin-left: 1px;
 }
 .btn-inline:focus {
   outline: none;
@@ -399,6 +409,59 @@ body {
 }
 .recommend__photo:not(:last-child) {
   margin-right: -1.5rem;
+}
+
+.review {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative; /* for the pseudo-element */
+  overflow: hidden; /* prevent the quote marks from overflowing the review box */
+}
+.review__text {
+  margin-bottom: 2rem;
+  position: relative; /* for the z-index */
+  z-index: 10; /* to put the text on top of the dots */
+}
+.review__user {
+  display: flex;
+  align-items: center;
+}
+.review__photo {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+.review__user-box {
+  margin-right: auto;
+}
+.review__user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.review__user-date {
+  font-size: 1.1rem;
+  color: var(--color-grey-dark-3);
+}
+.review__rating {
+  color: var(--color-primary);
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+.review::before { /* pseudo-element for the quote marks */
+  content: "“";
+  position: absolute;
+  top: -2.75rem;
+  left: -1rem;
+  font-size: 20rem;
+  line-height: 1;
+  color: var(--color-grey-light-2);
+  font-family: sans-serif; /* change the font of the quote marks */
+  z-index: 1; /* to put the quote marks on top of the review */
 }
 
 /*# sourceMappingURL=style.css.map */

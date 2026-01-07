@@ -279,10 +279,20 @@
     cursor: pointer;
     transition: all .2s;
 
+    & span {
+        margin-left: 3px;
+        transition: margin-left .2s;
+    }
+
     &:hover {
         color: var(--color-grey-dark-1);
         transform: translateY(-2px);
+
+        span {
+            margin-left: 1px;
+        }
     }
+
 
     &:focus {
         outline: none;
@@ -388,5 +398,74 @@
         &:not(:last-child) {
             margin-right: -1.5rem;
         }
+    }
+}
+
+////////////////////////////////////////
+/// REVIEW
+.review {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem; 
+    margin-bottom: 3.5rem;
+
+    position: relative; /* for the pseudo-element */
+    overflow: hidden; /* prevent the quote marks from overflowing the review box */
+
+    &__text {
+        margin-bottom: 2rem;
+        position: relative; /* for the z-index */
+        z-index: 10; /* to put the text on top of the dots */
+
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+
+    }
+
+    &__photo {
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+
+    }
+
+    &__user-box {
+        margin-right: auto;
+
+    }
+
+    &__user-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+
+    }
+
+    &__user-date {
+        font-size: 1.1rem;
+        color: var(--color-grey-dark-3);
+    }
+
+    &__rating {
+        color: var(--color-primary);
+        font-size: 2.2rem;
+        font-weight: 300;
+    }
+
+    &::before { /* pseudo-element for the quote marks */
+        content: "\201C";
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        font-size: 20rem;
+        line-height: 1;
+        color: var(--color-grey-light-2);
+        font-family: sans-serif; /* change the font of the quote marks */
+        z-index: 1; /* to put the quote marks on top of the review */
     }
 }

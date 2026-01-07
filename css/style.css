@@ -10,6 +10,8 @@
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
   --shadow-dark: 0 2rem 5rem rgba(0, 0, 0, .3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
+  --line: 1px solid var(--color-grey-light-2);
 }
 
 * {
@@ -70,7 +72,6 @@ body {
 .content .hotel-view {
   background-color: #fff;
   flex: 1; /* the element will take up the remaining space */
-  height: 80rem;
 }
 
 .gallery {
@@ -81,6 +82,27 @@ body {
 .gallery__photo {
   width: 100%; /* responsive design, make the photo take the full width of the gallery */
   display: block; /* image should always be block or inline-bllock, to avoid whitespace issues */
+}
+
+.detail {
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+}
+
+.description {
+  font-size: 1.4rem;
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  flex: 0 0 60%; /* flex-shrink: 0; flex-grow: 0; flex-basis: 60% */
+  margin-right: 4.5rem;
+}
+
+.user-reviews {
+  background-color: blue;
+  flex: 1; /* the element will take up the remaining space */
 }
 
 .logo {
@@ -321,6 +343,62 @@ body {
     transform: scale(1);
     box-shadow: none;
   }
+}
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+  display: flex;
+  flex-wrap: wrap; /* to wrap the list items to the next line if they don't fit in one line */
+}
+.list__item {
+  flex: 0 0 50%; /* to make the list items take 50% of the width of the parent element */
+  margin-bottom: 0.7rem;
+}
+.list__item::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.7rem;
+  /* Older browsers
+  background-image: url(../img/chevron-thin-right.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; */
+  background-color: var(--color-primary);
+  -webkit-mask-image: url(../img/chevron-thin-right.svg);
+  -webkit-mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url(../img/chevron-thin-right.svg);
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recommend__photo {
+  box-sizing: content-box; /* to include the border in the size of the photo */
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+.recommend__photo:not(:last-child) {
+  margin-right: -1.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

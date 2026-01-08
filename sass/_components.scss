@@ -121,6 +121,106 @@
         right: 1.1rem;
     }
 
+    &__messages {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        right: 0;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.15);
+        min-width: 30rem;
+        max-width: 35rem;
+        max-height: 40rem;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-1rem);
+        transition: all 0.2s;
+        z-index: 1000;
+    }
+
+    &__icon-box:hover &__messages {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__message {
+        display: flex;
+        padding: 1.5rem;
+        border-bottom: var(--line);
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            background-color: var(--color-grey-light-2);
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &--unread {
+            background-color: var(--color-grey-light-1);
+            font-weight: 600;
+
+            .user-nav__message-name {
+                font-weight: 700;
+            }
+
+            .user-nav__message-text {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &__message-photo {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    &__message-content {
+        flex: 1;
+        min-width: 0; // Allows text to wrap properly
+    }
+
+    &__message-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    &__message-name {
+        font-size: 1.4rem;
+        color: var(--color-grey-dark-1);
+        font-weight: 600;
+    }
+
+    &__message-time {
+        font-size: 1.1rem;
+        color: var(--color-grey-dark-3);
+        font-weight: 400;
+        white-space: nowrap;
+        margin-left: 1rem;
+    }
+
+    &__message-text {
+        font-size: 1.3rem;
+        color: var(--color-grey-dark-2);
+        line-height: 1.4;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
     &__user {
         position: relative; // For positioning the dropdown menu
     }

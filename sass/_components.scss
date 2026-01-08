@@ -14,6 +14,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
+
+    @media only screen and (max-width: $bp-smallest) {
+        order: 1; /* to put the search bar at the end of the header */
+        flex: 0 0 100%; /* make the search bar take the full width of the parent element */
+        background-color: var(--color-grey-light-2);
+    }
 
     &__input {
         font-family: inherit;
@@ -118,6 +125,11 @@
         height: 3.75rem;
         border-radius: 50%;
         margin-right: 1rem;
+
+        @media only screen and (max-width: $bp-smallest) {
+            height: 2.75rem;
+            width: 2.75rem;
+        }
 
     }
 }

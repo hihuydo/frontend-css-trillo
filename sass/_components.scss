@@ -121,6 +121,10 @@
         right: 1.1rem;
     }
 
+    &__user {
+        position: relative; // For positioning the dropdown menu
+    }
+
     &__user-photo {
         height: 3.75rem;
         border-radius: 50%;
@@ -130,7 +134,62 @@
             height: 2.75rem;
             width: 2.75rem;
         }
+    }
 
+    &__user-name {
+        font-weight: 600;
+    }
+
+    &__menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.15);
+        min-width: 15rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-1rem);
+        transition: all 0.2s;
+        z-index: 1000;
+        margin-top: 0.5rem;
+    }
+
+    &__user:hover &__menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__menu-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        text-decoration: none;
+        color: var(--color-grey-dark-2);
+        font-size: 1.4rem;
+        transition: all 0.2s;
+
+        &:not(:last-child) {
+            border-bottom: var(--line);
+        }
+
+        &:hover {
+            background-color: var(--color-grey-light-2);
+            color: var(--color-primary);
+        }
+
+        &:active {
+            background-color: var(--color-grey-light-3);
+        }
+    }
+
+    &__menu-icon {
+        height: 1.5rem;
+        width: 1.5rem;
+        fill: currentColor;
+        margin-right: 1rem;
     }
 }
 

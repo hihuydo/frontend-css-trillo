@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --color-primary: #eb2f64;
   --color-primary-light: #FF3366;
@@ -9,8 +10,16 @@
   --color-grey-dark-1: #333;
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
+  --shadow-dark: 0 2rem 5rem rgba(0, 0, 0, .3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
+  --line: 1px solid var(--color-grey-light-2);
 }
 
+/* 1200px / 16px = 75em */
+/* 1100px / 16px = 68.75em */
+/* 900px / 16px = 56.25em */
+/* 600px / 16px = 37.5em */
+/* 500px / 16px = 31.25em */
 * {
   margin: 0;
   padding: 0;
@@ -25,6 +34,11 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* 10px/16px = 62.5%, 1rem = 10px */
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 50%; /* 8px/16px = 50%, 1rem = 8px */
+  }
 }
 
 body {
@@ -42,8 +56,608 @@ body {
   max-width: 120rem;
   margin: 8rem auto;
   background-color: var(--color-grey-light-2);
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-dark);
   min-height: 50rem;
+}
+@media only screen and (max-width: 75em) {
+  .container {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 31.25em) {
+  .header {
+    flex-wrap: wrap; /* move search bar to a new line if the elements don't fit in the same line */
+    align-content: space-around;
+    height: 10rem;
+    padding-top: 1rem;
+  }
+}
+
+.content {
+  display: flex;
+}
+@media only screen and (max-width: 56.25em) {
+  .content {
+    flex-direction: column;
+  }
+}
+.content .sidebar {
+  background-color: var(--color-grey-dark-1);
+  flex: 0 0 18%; /* flex-shrink: 0; flex-grow: 0; flex-basis: 18% */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content .hotel-view {
+  background-color: #fff;
+  flex: 1; /* the element will take up the remaining space */
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gallery__photo {
+  width: 100%; /* responsive design, make the photo take the full width of the gallery */
+  display: block; /* image should always be block or inline-bllock, to avoid whitespace issues */
+}
+
+.detail {
+  font-size: 1.4rem;
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+}
+@media only screen and (max-width: 56.25em) {
+  .detail {
+    padding: 3rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .detail {
+    flex-direction: column;
+  }
+}
+
+.description {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  flex: 0 0 60%; /* flex-shrink: 0; flex-grow: 0; flex-basis: 60% */
+  margin-right: 4.5rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .description {
+    padding: 2rem;
+    margin-right: 3rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .description {
+    margin: 0 0 3rem 0;
+  }
+}
+
+.user-reviews {
+  flex: 1; /* the element will take up the remaining space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  height: 3.25rem;
+  margin-left: 2rem;
+}
+
+.search {
+  flex: 0 0 40%; /* flex-shrink: 0; flex-grow: 0; flex-basis: 40% */
+  /* grow 40% of the available space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 31.25em) {
+  .search {
+    order: 1; /* to put the search bar at the end of the header */
+    flex: 0 0 100%; /* make the search bar take the full width of the parent element */
+    background-color: var(--color-grey-light-2);
+  }
+}
+.search__input {
+  font-family: inherit;
+  font-size: inherit; /* inherit the font size from the parent element (header) */
+  color: inherit;
+  background-color: var(--color-grey-light-2);
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 10rem;
+  width: 90%;
+  transition: all 0.2s;
+  margin-right: -3.25rem;
+}
+.search__input:focus {
+  outline: none;
+  width: 100%;
+  background-color: var(--color-grey-light-3);
+}
+.search__input::-webkit-input-placeholder { /* style the placeholder text */
+  font-weight: 100; /* make the placeholder text lighter */
+  color: var(--color-grey-dark-2);
+}
+.search__input:focus + .search__button {
+  background-color: var(--color-grey-light-3);
+}
+.search__button {
+  border: none;
+  background-color: var(--color-grey-light-2);
+}
+.search__button:focus {
+  outline: none;
+}
+.search__button:active {
+  transform: translateY(2px);
+}
+.search__icon {
+  height: 2rem;
+  width: 2rem;
+  fill: var(--color-grey-dark-3);
+}
+
+.user-nav {
+  display: flex;
+  align-items: center;
+  align-self: stretch; /* make the user-nav take the full height of the parent element */
+}
+.user-nav > * { /* select all direct children of the user-nav */
+  padding: 0 2rem;
+  cursor: pointer;
+  height: 100%; /* make the direct children of the user-nav take the full height of the user-nav */
+  display: flex;
+  align-items: center;
+}
+.user-nav > *:hover {
+  background-color: var(--color-grey-light-2);
+}
+.user-nav__icon-box {
+  position: relative;
+}
+.user-nav__icon {
+  height: 2rem;
+  width: 2rem;
+  fill: var(--color-grey-dark-2);
+}
+.user-nav__notification {
+  font-size: 0.8rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.1rem;
+}
+.user-nav__user-photo {
+  height: 3.75rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+@media only screen and (max-width: 31.25em) {
+  .user-nav__user-photo {
+    height: 2.75rem;
+    width: 2.75rem;
+  }
+}
+
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .side-nav {
+    display: flex;
+    margin: 0;
+  }
+}
+.side-nav__item {
+  position: relative;
+}
+.side-nav__item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .side-nav__item:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .side-nav__item {
+    flex: 1; /* make the item take the full width of the parent element */
+  }
+}
+.side-nav__item::before { /* pseudo-element for the line */
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 100%;
+  background-color: var(--color-primary);
+  transform: scaleY(0);
+  transition: transform 0.2s, width 0.2s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.side-nav__item:hover::before, .side-nav__item--active::before {
+  transform: scaleY(1);
+  width: 100%;
+}
+.side-nav__item:active::before {
+  background-color: var(--color-primary-light);
+}
+.side-nav__link:link, .side-nav__link:visited {
+  color: var(--color-grey-light-2);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block; /* make the link take the full width of the parent element */
+  padding: 1.5rem 3rem;
+  position: relative; /* for the icon */
+  display: flex;
+  align-items: center;
+  position: relative; /* for the z-index */
+  z-index: 10;
+}
+@media only screen and (max-width: 56.25em) {
+  .side-nav__link:link, .side-nav__link:visited {
+    justify-content: center;
+    padding: 2rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .side-nav__link:link, .side-nav__link:visited {
+    flex-direction: column;
+    padding: 1.5rem 0.5rem;
+  }
+}
+.side-nav__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 2rem;
+  fill: currentColor; /* use the color of the parent element (text) */
+}
+@media only screen and (max-width: 37.5em) {
+  .side-nav__icon {
+    margin: 0 0 0.5rem 0;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.legal {
+  font-size: 1.2rem;
+  color: var(--color-grey-light-4);
+  text-align: center;
+  padding: 2.5rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .legal {
+    display: none;
+  }
+}
+
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: var(--line);
+}
+.overview__heading {
+  font-size: 2.25rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1.5rem 3rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .overview__heading {
+    font-size: 1.8rem;
+    padding: 1.25rem 2rem;
+  }
+}
+.overview__stars {
+  margin-right: auto; /* reduce the space of the stars to its size */
+  display: flex; /* to align the stars horizontally because svgs are inline elements */
+}
+.overview__icon-star, .overview__icon-location {
+  height: 1.75rem;
+  width: 1.75rem;
+  fill: var(--color-primary);
+}
+.overview__location {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+.overview__icon-location {
+  margin-right: 0.5rem;
+}
+.overview__rating {
+  background-color: var(--color-primary);
+  margin-left: 3rem;
+  color: #fff;
+  padding: 0 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch; /* make the rating take the full height of the parent element */
+}
+@media only screen and (max-width: 37.5em) {
+  .overview__rating {
+    padding: 0 1.5rem;
+  }
+}
+.overview__rating-average {
+  font-size: 2.25rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: -3px;
+}
+@media only screen and (max-width: 37.5em) {
+  .overview__rating-average {
+    font-size: 1.8rem;
+  }
+}
+.overview__rating-count {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 37.5em) {
+  .overview__rating-count {
+    font-size: 1rem;
+  }
+}
+
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+  font-size: inherit;
+  border-bottom: 1px solid currentColor; /* same color as the text */
+  padding-bottom: 2px;
+  display: inline-block; /* to make the button inline with the text */
+  background-color: transparent; /* to remove the background color of the button */
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-inline span {
+  margin-left: 3px;
+  transition: margin-left 0.2s;
+}
+.btn-inline:hover {
+  color: var(--color-grey-dark-1);
+  transform: translateY(-2px);
+}
+.btn-inline:hover span {
+  margin-left: 1px;
+}
+.btn-inline:focus {
+  outline: none;
+  animation: pulsate 1s infinite;
+}
+.btn-inline:active {
+  transform: translateY(0);
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+  display: flex;
+  flex-wrap: wrap; /* to wrap the list items to the next line if they don't fit in one line */
+}
+.list__item {
+  flex: 0 0 50%; /* to make the list items take 50% of the width of the parent element */
+  margin-bottom: 0.7rem;
+}
+.list__item::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.7rem;
+  /* Older browsers
+  background-image: url(../img/chevron-thin-right.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; */
+  background-color: var(--color-primary);
+  -webkit-mask-image: url(../img/chevron-thin-right.svg);
+  -webkit-mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url(../img/chevron-thin-right.svg);
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recommend__friends {
+  display: flex; /* to align the photos horizontally */
+}
+.recommend__photo {
+  box-sizing: content-box; /* to include the border in the size of the photo */
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+.recommend__photo:not(:last-child) {
+  margin-right: -2rem;
+}
+
+.review {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative; /* for the pseudo-element */
+  overflow: hidden; /* prevent the quote marks from overflowing the review box */
+}
+@media only screen and (max-width: 56.25em) {
+  .review {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .review:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+}
+.review__text {
+  margin-bottom: 2rem;
+  position: relative; /* for the z-index */
+  z-index: 10; /* to put the text on top of the dots */
+}
+.review__user {
+  display: flex;
+  align-items: center;
+}
+.review__photo {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+.review__user-box {
+  margin-right: auto;
+}
+.review__user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.review__user-date {
+  font-size: 1.1rem;
+  color: var(--color-grey-dark-3);
+}
+.review__rating {
+  color: var(--color-primary);
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+.review::before { /* pseudo-element for the quote marks */
+  content: "“";
+  position: absolute;
+  top: -2.75rem;
+  left: -1rem;
+  font-size: 20rem;
+  line-height: 1;
+  color: var(--color-grey-light-2);
+  font-family: sans-serif; /* change the font of the quote marks */
+  z-index: 1; /* to put the quote marks on top of the review */
+}
+
+.cta {
+  padding: 3.5rem 0;
+  text-align: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .cta {
+    padding: 2.5rem 0;
+  }
+}
+.cta__book-now {
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 100px;
+  border: none;
+  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+  cursor: pointer;
+  position: relative; /* for the children elements */
+  overflow: hidden; /* prevent the invisible text from overflowing the button (showing) */
+}
+.btn > * {
+  display: inline-block; /* to be able to use padding and margin */
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s;
+}
+.btn__visible {
+  padding: 2rem 7.5rem;
+}
+.btn__invisible {
+  position: absolute;
+  top: -100%; /* move up exactly the height of the button */
+  left: 0;
+  padding: 2rem 0;
+}
+.btn:hover {
+  background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+}
+.btn:hover .btn__visible {
+  transform: translateY(100%);
+}
+.btn:hover .btn__invisible {
+  top: 0;
+}
+.btn:focus {
+  outline: none;
+  animation: pulsate 1s infinite;
 }
 
 /*# sourceMappingURL=style.comp.css.map */

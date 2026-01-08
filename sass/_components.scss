@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    position: relative; // For positioning the suggestions dropdown
 
     @media only screen and (max-width: $bp-smallest) {
         order: 1; /* to put the search bar at the end of the header */
@@ -70,6 +70,65 @@
         width: 2rem;
         fill: var(--color-grey-dark-3);
     }
+
+    &__suggestions {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.15);
+        max-height: 30rem;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-1rem);
+        transition: all 0.2s;
+        z-index: 1000;
+    }
+
+    &__input:focus ~ &__suggestions,
+    &__input:not(:placeholder-shown) ~ &__suggestions {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__suggestion {
+        display: flex;
+        align-items: center;
+        padding: 1.2rem 1.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        border-bottom: var(--line);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: var(--color-grey-light-2);
+        }
+
+        &:active {
+            background-color: var(--color-grey-light-3);
+        }
+    }
+
+    &__suggestion-icon {
+        height: 1.5rem;
+        width: 1.5rem;
+        fill: var(--color-grey-dark-3);
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    &__suggestion-text {
+        font-size: 1.4rem;
+        color: var(--color-grey-dark-2);
+        flex: 1;
+    }
 }
 
 ////////////////////////////////////////
@@ -121,6 +180,110 @@
         right: 1.1rem;
     }
 
+    &__messages {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        right: 0;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.15);
+        min-width: 30rem;
+        max-width: 35rem;
+        max-height: 40rem;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-1rem);
+        transition: all 0.2s;
+        z-index: 1000;
+    }
+
+    &__icon-box:hover &__messages {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__message {
+        display: flex;
+        padding: 1.5rem;
+        border-bottom: var(--line);
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            background-color: var(--color-grey-light-2);
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &--unread {
+            background-color: var(--color-grey-light-1);
+            font-weight: 600;
+
+            .user-nav__message-name {
+                font-weight: 700;
+            }
+
+            .user-nav__message-text {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &__message-photo {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    &__message-content {
+        flex: 1;
+        min-width: 0; // Allows text to wrap properly
+    }
+
+    &__message-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    &__message-name {
+        font-size: 1.4rem;
+        color: var(--color-grey-dark-1);
+        font-weight: 600;
+    }
+
+    &__message-time {
+        font-size: 1.1rem;
+        color: var(--color-grey-dark-3);
+        font-weight: 400;
+        white-space: nowrap;
+        margin-left: 1rem;
+    }
+
+    &__message-text {
+        font-size: 1.3rem;
+        color: var(--color-grey-dark-2);
+        line-height: 1.4;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    &__user {
+        position: relative; // For positioning the dropdown menu
+    }
+
     &__user-photo {
         height: 3.75rem;
         border-radius: 50%;
@@ -130,7 +293,62 @@
             height: 2.75rem;
             width: 2.75rem;
         }
+    }
 
+    &__user-name {
+        font-weight: 600;
+    }
+
+    &__menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.15);
+        min-width: 15rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-1rem);
+        transition: all 0.2s;
+        z-index: 1000;
+        margin-top: 0.5rem;
+    }
+
+    &__user:hover &__menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__menu-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        text-decoration: none;
+        color: var(--color-grey-dark-2);
+        font-size: 1.4rem;
+        transition: all 0.2s;
+
+        &:not(:last-child) {
+            border-bottom: var(--line);
+        }
+
+        &:hover {
+            background-color: var(--color-grey-light-2);
+            color: var(--color-primary);
+        }
+
+        &:active {
+            background-color: var(--color-grey-light-3);
+        }
+    }
+
+    &__menu-icon {
+        height: 1.5rem;
+        width: 1.5rem;
+        fill: currentColor;
+        margin-right: 1rem;
     }
 }
 

@@ -58,9 +58,40 @@
     justify-content: center;
     align-items: center;
 
+    &__item {
+        position: relative;
+        overflow: hidden; // Hide caption overflow
+    }
+
     &__photo { 
         width: 100%; /* responsive design, make the photo take the full width of the gallery */
         display: block; /* image should always be block or inline-bllock, to avoid whitespace issues */
+        transition: transform 0.3s, filter 0.3s;
+    }
+
+    &__item:hover &__photo {
+        transform: scale(1.1);
+        filter: brightness(0.7);
+    }
+
+    &__caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: #fff;
+        padding: 2rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-align: center;
+        transform: translateY(100%);
+        transition: transform 0.3s;
+        z-index: 10;
+    }
+
+    &__item:hover &__caption {
+        transform: translateY(0);
     }
 }
 

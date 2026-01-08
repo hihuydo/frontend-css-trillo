@@ -24,6 +24,32 @@
                             <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
                         </svg>
                     </button>
+                    <div class="search__suggestions">
+                        <div class="search__suggestion">
+                            <svg class="search__suggestion-icon">
+                                <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                            </svg>
+                            <span class="search__suggestion-text">Hotel Las Palmas</span>
+                        </div>
+                        <div class="search__suggestion">
+                            <svg class="search__suggestion-icon">
+                                <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                            </svg>
+                            <span class="search__suggestion-text">Hotel Paradise Beach</span>
+                        </div>
+                        <div class="search__suggestion">
+                            <svg class="search__suggestion-icon">
+                                <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                            </svg>
+                            <span class="search__suggestion-text">Grand Hotel Resort</span>
+                        </div>
+                        <div class="search__suggestion">
+                            <svg class="search__suggestion-icon">
+                                <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                            </svg>
+                            <span class="search__suggestion-text">Sunset Beach Hotel</span>
+                        </div>
+                    </div>
                 </form>
                 <nav class="user-nav">
                     <div class="user-nav__icon-box">
@@ -37,6 +63,38 @@
                             <use xlink:href="img/sprite.svg#icon-chat"></use>
                         </svg>
                         <span class="user-nav__notification">13</span>
+                        <div class="user-nav__messages">
+                            <div class="user-nav__message user-nav__message--unread">
+                                <img src="img/user.jpg" alt="User" class="user-nav__message-photo">
+                                <div class="user-nav__message-content">
+                                    <div class="user-nav__message-header">
+                                        <span class="user-nav__message-name">John Doe</span>
+                                        <span class="user-nav__message-time">2 min ago</span>
+                                    </div>
+                                    <p class="user-nav__message-text">Hey! How are you doing?</p>
+                                </div>
+                            </div>
+                            <div class="user-nav__message">
+                                <img src="img/user.jpg" alt="User" class="user-nav__message-photo">
+                                <div class="user-nav__message-content">
+                                    <div class="user-nav__message-header">
+                                        <span class="user-nav__message-name">Jane Smith</span>
+                                        <span class="user-nav__message-time">1 hour ago</span>
+                                    </div>
+                                    <p class="user-nav__message-text">Thanks for the help yesterday!</p>
+                                </div>
+                            </div>
+                            <div class="user-nav__message">
+                                <img src="img/user.jpg" alt="User" class="user-nav__message-photo">
+                                <div class="user-nav__message-content">
+                                    <div class="user-nav__message-header">
+                                        <span class="user-nav__message-name">Mike Johnson</span>
+                                        <span class="user-nav__message-time">3 hours ago</span>
+                                    </div>
+                                    <p class="user-nav__message-text">See you tomorrow!</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="user-nav__icon-box">
                         <svg class="user-nav__icon">
@@ -46,6 +104,20 @@
                     <div class="user-nav__user">
                         <img src="img/user.jpg" alt="User photo" class="user-nav__user-photo">
                         <span class="user-nav__user-name">Huy Do</span>
+                        <div class="user-nav__menu">
+                            <a href="#" class="user-nav__menu-item">
+                                <svg class="user-nav__menu-icon">
+                                    <use xlink:href="img/sprite.svg#icon-cog"></use>
+                                </svg>
+                                <span>Settings</span>
+                            </a>
+                            <a href="#" class="user-nav__menu-item">
+                                <svg class="user-nav__menu-icon">
+                                    <use xlink:href="img/sprite.svg#icon-chevron-right"></use>
+                                </svg>
+                                <span>Log out</span>
+                            </a>
+                        </div>
                     </div>
                 </nav>
             </header>
@@ -91,12 +163,15 @@
                     <div class="gallery">
                         <figure class="gallery__item">
                             <img src="img/hotel-1.jpg" alt="Hotel 1" class="gallery__photo">
+                            <figcaption class="gallery__caption">Hotel Las Palmas - Exterior View</figcaption>
                         </figure>
                         <figure class="gallery__item">
                             <img src="img/hotel-2.jpg" alt="Hotel 2" class="gallery__photo">
+                            <figcaption class="gallery__caption">Hotel Las Palmas - Pool Area</figcaption>
                         </figure>
                         <figure class="gallery__item">
                             <img src="img/hotel-3.jpg" alt="Hotel 3" class="gallery__photo">
+                            <figcaption class="gallery__caption">Hotel Las Palmas - Beach View</figcaption>
                         </figure>
                     </div>
 

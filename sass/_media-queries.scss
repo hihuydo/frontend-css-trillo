@@ -1,0 +1,171 @@
+////////////////////////////////////////
+/// MEDIA QUERIES
+
+// Phone: up to 600px (37.5em)
+@media only screen and (max-width: 37.5em) {
+    // 600px / 16px = 37.5em
+    
+    html {
+        font-size: 50%; // 8px/16px = 50%, 1rem = 8px
+    }
+
+    .container {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    // Show burger menu button
+    .navigation__button {
+        display: block;
+    }
+
+    .header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 1rem 0;
+        padding-left: 7rem; // Make room for burger menu
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .search {
+        order: 1;
+        flex: 0 0 100%;
+        margin: 1rem 0;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    // Hide sidebar by default, show when burger menu is checked
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 0;
+        z-index: 1500;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        overflow: hidden;
+    }
+
+    // Show sidebar when checkbox is checked - fills whole screen
+    .navigation__checkbox:checked ~ .content .sidebar {
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    // Add overlay when menu is open
+    .navigation__checkbox:checked ~ .content::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .detail {
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .description {
+        flex: 0 0 100%;
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .user-reviews {
+        flex: 0 0 100%;
+    }
+}
+
+// Tablet Portrait: 600px - 900px (37.5em - 56.25em)
+@media only screen and (min-width: 37.5em) and (max-width: 56.25em) {
+    // 600px / 16px = 37.5em
+    // 900px / 16px = 56.25em
+
+    html {
+        font-size: 56.25%; // 9px/16px = 56.25%, 1rem = 9px
+    }
+
+    .container {
+        margin: 4rem auto;
+    }
+
+    .header {
+        padding: 0 2rem;
+    }
+
+    .search {
+        flex: 0 0 50%;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: 0 0 100%;
+    }
+
+    .detail {
+        flex-direction: column;
+        padding: 3rem;
+    }
+
+    .description {
+        flex: 0 0 100%;
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    .user-reviews {
+        flex: 0 0 100%;
+    }
+}
+
+// Tablet Landscape: 900px - 1200px (56.25em - 75em)
+@media only screen and (min-width: 56.25em) and (max-width: 75em) {
+    // 900px / 16px = 56.25em
+    // 1200px / 16px = 75em
+
+    html {
+        font-size: 56.25%; // 9px/16px = 56.25%, 1rem = 9px
+    }
+
+    .container {
+        margin: 6rem auto;
+    }
+
+    .header {
+        padding: 0 3rem;
+    }
+
+    .search {
+        flex: 0 0 45%;
+    }
+
+    .sidebar {
+        flex: 0 0 20%;
+    }
+
+    .detail {
+        padding: 3.5rem;
+    }
+
+    .description {
+        flex: 0 0 55%;
+        margin-right: 3rem;
+    }
+}
+

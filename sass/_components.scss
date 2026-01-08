@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    position: relative; // For positioning the suggestions dropdown
 
     @media only screen and (max-width: $bp-smallest) {
         order: 1; /* to put the search bar at the end of the header */
@@ -69,6 +69,65 @@
         height: 2rem;
         width: 2rem;
         fill: var(--color-grey-dark-3);
+    }
+
+    &__suggestions {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.15);
+        max-height: 30rem;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-1rem);
+        transition: all 0.2s;
+        z-index: 1000;
+    }
+
+    &__input:focus ~ &__suggestions,
+    &__input:not(:placeholder-shown) ~ &__suggestions {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__suggestion {
+        display: flex;
+        align-items: center;
+        padding: 1.2rem 1.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        border-bottom: var(--line);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: var(--color-grey-light-2);
+        }
+
+        &:active {
+            background-color: var(--color-grey-light-3);
+        }
+    }
+
+    &__suggestion-icon {
+        height: 1.5rem;
+        width: 1.5rem;
+        fill: var(--color-grey-dark-3);
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    &__suggestion-text {
+        font-size: 1.4rem;
+        color: var(--color-grey-dark-2);
+        flex: 1;
     }
 }
 
